@@ -1,0 +1,25 @@
+{%extends 'layout/app-layout.html'%}
+{%block 'content'%}
+<div class="container bg-white">
+<div class="mt-5 text-center"> 
+<h1>Medicines List</h1><br><br>
+<table border="3" class="mx-auto" style="border-style: dashed; border-color: black;">
+    <tr><th class="px-3">Id</th>
+        <th class="px-3">Name</th>
+        <th class="px-3">Description</th>
+        <th class="px-3">Price</th>
+        <th class="px-4">Edit</th>
+        <th class="px-4">Delete</th></tr>
+        {%for med in med_list%}
+    <tr>
+    <td>{{med.id}}</td>
+    <td>{{ med.Name }} </td>
+    <td>{{ med.Description }} </td>  
+    <td>{{ med.Price }}</td>
+    <td ><a href="{%url 'updatemed' med.id %}" class="btn btn-primary" value="edit" type="submit">Edit</a></td>
+    <td><a href="{%url 'deletemed' med.id %}" class="btn btn-danger" value="edit" type="submit">Delete</a></td>
+    </tr>
+     {% endfor %}
+    </table> <br><br>
+</div></div>
+{%endblock%}

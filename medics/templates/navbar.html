@@ -1,0 +1,11 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div>
+        <a href="{% url 'home' %}"class="ml-3 text-white"><b>Home</b></a>
+        <a href="{% url 'createmed' %}" class="ml-3 text-white"><b>Create</b></a>
+        <a href="{% url 'listmed' %}"class="ml-3 text-white"><b>View</b></a>
+    </div>
+    
+    <div class="ml-auto">
+        <a href="{% url 'logout' %}"class="ml-3 text-white ">LogOut</a>
+    </div>
+</nav>

@@ -1,0 +1,44 @@
+{% extends 'layout/app-layout.html' %}
+
+{% block 'content' %}
+
+<div class="container bg-white">
+    <div class="mt-5"> 
+        <h1 class="text-center ml-5"><u>MyMeds</u></h1><br>
+        <marquee style="color:rgb(60, 255, 0)"><b><i>Anytime,Anywhere,Shipping is available</i></b></marquee><br><br>
+<form method="get" action="{% url 'search_item' %}"class="text-center" >
+    <label for="search"></label>
+    <input type="text" name="search" id="search" value="{{ request.GET.search }}">
+    <input type="submit" value="Search" class="btn btn-info">
+</form>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6 mx-auto mt-5 ">
+{% if items %}
+    <table border="2" class="text-center">
+        <tr>
+            <th class="px-3">ID</th>
+            <th class="px-3">Name</th>
+            <th class="px-3">Description</th>
+            <th class="px-3">Price</th>
+            <th class="px-4">Edit</th>
+            <th class="px-4">Delete</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.Name }}</td>
+            <td>{{ item.Description }}</td>
+            <td>{{ item.Price }}</td>
+            <td ><a href="{%url 'updatemed' item.id %}" class="btn btn-primary" value="edit" type="submit">Edit</a></td>
+            <td><a href="{%url 'deletemed' item.id %}" class="btn btn-danger" value="edit" type="submit">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p class="ml-5 text-danger"><b>{{message}}</b></p>
+{% endif %}
+
+<br><br>
+</div></div></div></div>
+{%endblock%}
